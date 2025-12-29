@@ -1,7 +1,7 @@
 # Kotlin CAIP Standards
 
 <p align="center">
-  <img src="docs/images/hero-banner.png" alt="Kotlin CAIP Standards" width="100%">
+  <img src="../docs/images/kmp_crypto_banner.png" alt="Kotlin CAIP Standards" width="100%">
 </p>
 
 <p align="center">
