@@ -1,10 +1,10 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    kotlin("multiplatform") version "2.1.0"
-    kotlin("plugin.serialization") version "2.1.0"
-    id("com.android.library") version "8.6.0"
-    id("maven-publish")
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.android.library)
+    `maven-publish`
 }
 
 group = "io.github.iml1s"
@@ -44,7 +44,6 @@ kotlin {
 
     // watchOS targets
     watchosX64()
-    watchosArm32()
     watchosArm64()
     watchosSimulatorArm64()
 
@@ -62,6 +61,7 @@ kotlin {
                 implementation(kotlin("test"))
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
             }
         }
 
@@ -94,13 +94,11 @@ kotlin {
         }
 
         val watchosX64Main by getting
-        val watchosArm32Main by getting
         val watchosArm64Main by getting
         val watchosSimulatorArm64Main by getting
         val watchosMain by creating {
             dependsOn(commonMain)
             watchosX64Main.dependsOn(this)
-            watchosArm32Main.dependsOn(this)
             watchosArm64Main.dependsOn(this)
             watchosSimulatorArm64Main.dependsOn(this)
         }
